@@ -3,106 +3,162 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Menu a 3 Livelli con Animazione</title>
+  <title>Pagina stile Wikipedia</title>
   <style>
     body {
+      font-family: "Linux Libertine", Georgia, serif;
       margin: 0;
-      font-family: sans-serif;
-      background: #ecf0f1;
+      background-color: #f6f6f6;
+      color: #202122;
     }
 
-    .sidebar {
-      width: 260px;
-      background: #2c3e50;
-      color: white;
-      height: 100vh;
-      overflow-y: auto;
-      padding: 15px;
+    header {
+      background-color: #ffffff;
+      border-bottom: 1px solid #a2a9b1;
+      padding: 20px;
+      text-align: center;
+      position: relative;
     }
 
-    .menu-item,
-    .submenu-item {
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+
+    /* Hamburger */
+    .menu-toggle {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      font-size: 24px;
+      background: none;
+      border: none;
       cursor: pointer;
-      padding: 10px;
-      background: #34495e;
-      margin-bottom: 5px;
-      transition: background 0.3s ease;
     }
 
-    .menu-item:hover,
-    .submenu-item:hover {
-      background: #3e5870;
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 70px;
+      left: 0;
+      width: 220px;
+      height: calc(100vh - 70px);
+      background-color: #ffffff;
+      border-right: 1px solid #a2a9b1;
+      padding: 15px;
+      box-sizing: border-box;
+      overflow-y: auto;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 1000;
     }
 
-    .submenu,
-    .sub-submenu {
-      max-height: 0;
-      overflow: hidden;
-      background: #3b5873;
-      transition: max-height 0.4s ease;
+    .sidebar.open {
+      transform: translateX(0);
     }
 
-    .submenu a,
-    .sub-submenu a {
-      display: block;
-      padding: 8px 15px;
-      color: white;
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      margin-bottom: 10px;
+    }
+
+    .sidebar ul li a {
+      color: #0645ad;
       text-decoration: none;
     }
 
-    .submenu a:hover,
-    .sub-submenu a:hover {
-      background: #1abc9c;
+    .sidebar ul li a:hover {
+      text-decoration: underline;
     }
 
-    .submenu.open,
-    .sub-submenu.open {
-      max-height: 500px; /* abbastanza grande da contenere tutti gli elementi */
+    main {
+      margin: 0 auto;
+      padding: 20px;
+      max-width: 800px;
+      margin-top: 30px;
+    }
+
+    h2 {
+      border-bottom: 1px solid #a2a9b1;
+      padding-bottom: 5px;
+      margin-top: 30px;
+    }
+
+    footer {
+      background-color: #f8f9fa;
+      border-top: 1px solid #a2a9b1;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #555;
+      margin-top: 40px;
+    }
+
+    /* Responsive */
+    @media (min-width: 768px) {
+      .menu-toggle {
+        display: none;
+      }
+
+      .sidebar {
+        transform: translateX(0);
+        position: static;
+        width: 220px;
+        float: left;
+        height: auto;
+      }
+
+      main {
+        margin-left: 240px;
+      }
     }
   </style>
 </head>
 <body>
 
-<div class="sidebar">
-  <div class="menu-item">Livello 1 - A</div>
-  <div class="submenu">
-    <div class="submenu-item">Livello 2 - A1</div>
-    <div class="sub-submenu">
-      <a href="#">Livello 3 - A1a</a>
-      <a href="#">Livello 3 - A1b</a>
-    </div>
-    <div class="submenu-item">Livello 2 - A2</div>
-    <div class="sub-submenu">
-      <a href="#">Livello 3 - A2a</a>
-    </div>
-  </div>
+<header>
+  <button class="menu-toggle" id="menuToggle">☰</button>
+  <h1>Enciclopedia Personale</h1>
+  <p>Stile Wikipedia con menu a scomparsa</p>
+</header>
 
-  <div class="menu-item">Livello 1 - B</div>
-  <div class="submenu">
-    <div class="submenu-item">Livello 2 - B1</div>
-    <div class="sub-submenu">
-      <a href="#">Livello 3 - B1a</a>
-    </div>
-  </div>
-</div>
+<nav class="sidebar" id="sidebar">
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Storia</a></li>
+    <li><a href="#">Scienza</a></li>
+    <li><a href="#">Arte</a></li>
+    <li><a href="#">Tecnologia</a></li>
+    <li><a href="#">Contatti</a></li>
+  </ul>
+</nav>
+
+<main>
+  <h2>Benvenuto</h2>
+  <p>Questa è una pagina HTML progettata in stile Wikipedia, con un menu laterale a scomparsa per dispositivi mobili.</p>
+
+  <h2>Contenuti</h2>
+  <p>Puoi personalizzare il contenuto con testi, immagini, citazioni, grafici e altro. Il layout è pensato per essere pulito e leggibile.</p>
+
+  <h2>Come Funziona</h2>
+  <p>Il menu laterale è visibile sempre su desktop, mentre su dispositivi mobili è a scomparsa e può essere attivato tramite il pulsante ☰.</p>
+</main>
+
+<footer>
+  Questa pagina è ispirata a Wikipedia, ma non è affiliata con Wikimedia Foundation.<br>
+  &copy; 2025 - Progetto HTML e CSS personale.
+</footer>
 
 <script>
-  // Toggle 1° livello
-  document.querySelectorAll('.menu-item').forEach(item => {
-    item.addEventListener('click', () => {
-      const submenu = item.nextElementSibling;
-      submenu.classList.toggle('open');
-    });
-  });
+  const toggle = document.getElementById('menuToggle');
+  const sidebar = document.getElementById('sidebar');
 
-  // Toggle 2° livello
-  document.querySelectorAll('.submenu-item').forEach(item => {
-    item.addEventListener('click', () => {
-      const subsubmenu = item.nextElementSibling;
-      if (subsubmenu && subsubmenu.classList.contains('sub-submenu')) {
-        subsubmenu.classList.toggle('open');
-      }
-    });
+  toggle.addEventListener('click', () => {
+    sidebar.classList.toggle('open');
   });
 </script>
 
