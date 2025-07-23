@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pagina stile Wikipedia</title>
+  <style>
+    body {
+      font-family: "Linux Libertine", Georgia, serif;
+      margin: 0;
+      background-color: #f6f6f6;
+      color: #202122;
+    }
+
+    header {
+      background-color: #ffffff;
+      border-bottom: 1px solid #a2a9b1;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+
+    /* Hamburger */
+    .menu-toggle {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      font-size: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 70px;
+      left: 0;
+      width: 220px;
+      height: calc(100vh - 70px);
+      background-color: #ffffff;
+      border-right: 1px solid #a2a9b1;
+      padding: 15px;
+      box-sizing: border-box;
+      overflow-y: auto;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 1000;
+    }
+
+    .sidebar.open {
+      transform: translateX(0);
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      margin-bottom: 10px;
+    }
+
+    .sidebar ul li a {
+      color: #0645ad;
+      text-decoration: none;
+    }
+
+    .sidebar ul li a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      margin: 0 auto;
+      padding: 20px;
+      max-width: 800px;
+      margin-top: 30px;
+    }
+
+    h2 {
+      border-bottom: 1px solid #a2a9b1;
+      padding-bottom: 5px;
+      margin-top: 30px;
+    }
+
+    footer {
+      background-color: #f8f9fa;
+      border-top: 1px solid #a2a9b1;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #555;
+      margin-top: 40px;
+    }
+
+    /* Responsive */
+    @media (min-width: 768px) {
+      .menu-toggle {
+        display: none;
+      }
+
+      .sidebar {
+        transform: translateX(0);
+        position: static;
+        width: 220px;
+        float: left;
+        height: auto;
+      }
+
+      main {
+        margin-left: 240px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <button class="menu-toggle" id="menuToggle">☰</button>
+  <h1>Enciclopedia Personale</h1>
+  <p>Stile Wikipedia con menu a scomparsa</p>
+</header>
+
+<nav class="sidebar" id="sidebar">
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Storia</a></li>
+    <li><a href="#">Scienza</a></li>
+    <li><a href="#">Arte</a></li>
+    <li><a href="#">Tecnologia</a></li>
+    <li><a href="#">Contatti</a></li>
+  </ul>
+</nav>
+
+<main>
+  <h2>Benvenuto</h2>
+  <p>Questa è una pagina HTML progettata in stile Wikipedia, con un menu laterale a scomparsa per dispositivi mobili.</p>
+
+  <h2>Contenuti</h2>
+  <p>Puoi personalizzare il contenuto con testi, immagini, citazioni, grafici e altro. Il layout è pensato per essere pulito e leggibile.</p>
+
+  <h2>Come Funziona</h2>
+  <p>Il menu laterale è visibile sempre su desktop, mentre su dispositivi mobili è a scomparsa e può essere attivato tramite il pulsante ☰.</p>
+</main>
+
+<footer>
+  Questa pagina è ispirata a Wikipedia, ma non è affiliata con Wikimedia Foundation.<br>
+  &copy; 2025 - Progetto HTML e CSS personale.
+</footer>
+
+<script>
+  const toggle = document.getElementById('menuToggle');
+  const sidebar = document.getElementById('sidebar');
+
+  toggle.addEventListener('click', () => {
+    sidebar.classList.toggle('open');
+  });
+</script>
+
+</body>
+</html>
