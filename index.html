@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Menu a 3 Livelli con Animazione</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #ecf0f1;
+    }
+
+    .sidebar {
+      width: 260px;
+      background: #2c3e50;
+      color: white;
+      height: 100vh;
+      overflow-y: auto;
+      padding: 15px;
+    }
+
+    .menu-item,
+    .submenu-item {
+      cursor: pointer;
+      padding: 10px;
+      background: #34495e;
+      margin-bottom: 5px;
+      transition: background 0.3s ease;
+    }
+
+    .menu-item:hover,
+    .submenu-item:hover {
+      background: #3e5870;
+    }
+
+    .submenu,
+    .sub-submenu {
+      max-height: 0;
+      overflow: hidden;
+      background: #3b5873;
+      transition: max-height 0.4s ease;
+    }
+
+    .submenu a,
+    .sub-submenu a {
+      display: block;
+      padding: 8px 15px;
+      color: white;
+      text-decoration: none;
+    }
+
+    .submenu a:hover,
+    .sub-submenu a:hover {
+      background: #1abc9c;
+    }
+
+    .submenu.open,
+    .sub-submenu.open {
+      max-height: 500px; /* abbastanza grande da contenere tutti gli elementi */
+    }
+  </style>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="menu-item">Livello 1 - A</div>
+  <div class="submenu">
+    <div class="submenu-item">Livello 2 - A1</div>
+    <div class="sub-submenu">
+      <a href="#">Livello 3 - A1a</a>
+      <a href="#">Livello 3 - A1b</a>
+    </div>
+    <div class="submenu-item">Livello 2 - A2</div>
+    <div class="sub-submenu">
+      <a href="#">Livello 3 - A2a</a>
+    </div>
+  </div>
+
+  <div class="menu-item">Livello 1 - B</div>
+  <div class="submenu">
+    <div class="submenu-item">Livello 2 - B1</div>
+    <div class="sub-submenu">
+      <a href="#">Livello 3 - B1a</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Toggle 1° livello
+  document.querySelectorAll('.menu-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const submenu = item.nextElementSibling;
+      submenu.classList.toggle('open');
+    });
+  });
+
+  // Toggle 2° livello
+  document.querySelectorAll('.submenu-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const subsubmenu = item.nextElementSibling;
+      if (subsubmenu && subsubmenu.classList.contains('sub-submenu')) {
+        subsubmenu.classList.toggle('open');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
